@@ -9,7 +9,7 @@ import { getProductDescription } from '../../services/graphql/requests';
 
 //components
 import Attributes from '../../components/ProductAttributes';
-import Button from '../../components/Button';
+import { PrimaryButton } from '../../components/Button';
 
 //services
 import { addProductToCart } from '../../services/redux/cartSlice';
@@ -169,11 +169,12 @@ class ProductDetails extends Component {
                   {currency}
                   {amount}
                </h3>
-               <Button
+               <PrimaryButton
                   onClick={() => this.addProductToCartHandler()}
-                  name={'ADD TO CART'}
                   disabled={!inStock}
-               />
+               >
+                  ADD TO CART
+               </PrimaryButton>
                <div className="product-description ff-roboto">
                   {parseHtmlString(description)}
                </div>

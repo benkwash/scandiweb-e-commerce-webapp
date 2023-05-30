@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import './Button.css';
 
 function Button({
-   name,
+   children,
    type = 'button',
    onClick = () => {},
    variant = 'primary',
@@ -18,9 +18,25 @@ function Button({
          })}
          disabled={disabled}
       >
-         {name}
+         {children}
       </button>
    );
 }
 
-export default Button;
+function PrimaryButton({ children, ...rest }) {
+   return (
+      <Button variant="primary" {...rest}>
+         {children}
+      </Button>
+   );
+}
+
+function SecondaryButton({ children, ...rest }) {
+   return (
+      <Button variant="secondary" {...rest}>
+         {children}
+      </Button>
+   );
+}
+
+export { Button as default, PrimaryButton, SecondaryButton };

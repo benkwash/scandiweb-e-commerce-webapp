@@ -9,10 +9,12 @@
    bottom: 0px;
 }
 .nav-items {
-   padding-left: 15px;
-   padding-right: 15px;
+   /* padding-left: 15px;
+   padding-right: 15px; */
    height: 56px;
    position: relative;
+
+   /* border: solid red; */
 }
 .nav-text {
    color: #1d1f22;
@@ -21,19 +23,14 @@
    font-size: 16px;
    line-height: 19.2px;
    align-self: center;
-}
-.nav-bar {
-   position: relative;
-   top: 35px;
-   width: 120%;
-   border: 1px solid #5ece7b;
-   left: 50%;
-   -ms-transform: translateX(-50%);
-   transform: translateX(-50%);
-}
 
+   padding-left: 15px;
+   padding-right: 15px;
+   padding-bottom: 37px;
+}
 .nav-selected {
    color: #5ece7b;
+   border-bottom: 2px solid #5ece7b;
 }
 
 .bar-hidden {

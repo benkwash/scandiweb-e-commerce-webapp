@@ -1,65 +1,49 @@
-import { Component } from 'react';
-
+import { useState } from 'react';
 import './ImageCarousal.css';
 
 import arrowLeft from '../../assets/icons/c-left.svg';
 import arrowRight from '../../assets/icons/c-right.svg';
 
-class ImageCarousal extends Component {
-   constructor(props) {
-      super(props);
+function ImageCarousal({ isCartTab = false, gallery }) {
+   const [selectedImg, setSelectedImg] = useState(0);
 
-      this.state = {
-         selectedImg: 0
-      };
-   }
-
-   moveImg = (isLeft) => {
+   const moveImg = (isLeft) => {
       let imgIndex;
-      const { selectedImg } = this.state;
       if (isLeft) {
-         imgIndex =
-            selectedImg === 0 ? this.props.gallery.length - 1 : selectedImg - 1;
+         imgIndex = selectedImg === 0 ? gallery.length - 1 : selectedImg - 1;
       } else {
-         imgIndex =
-            selectedImg < this.props.gallery.length - 1 ? selectedImg + 1 : 0;
+         imgIndex = selectedImg < gallery.length - 1 ? selectedImg + 1 : 0;
       }
 
-      this.setState(() => ({
-         selectedImg: imgIndex
-      }));
+      setSelectedImg(imgIndex);
    };
 
-   render() {
-      const { selectedImg } = this.state;
-      const { isCartTab = false, gallery } = this.props;
-      return (
-         <div className="carousal-img-container">
-            <img
-               className="carousal-img  element-transition show"
-               src={gallery[selectedImg]}
-               alt="current-carousal"
-            />
-            <div className="img-overlay"></div>
-            {!isCartTab && gallery.length > 1 && (
-               <div className="arrow-group">
-                  <img
-                     className="arrow-left-icon cursor-pointer hover-effect"
-                     src={arrowLeft}
-                     alt="arrow left icon"
-                     onClick={() => this.moveImg(true)}
-                  />
-                  <img
-                     className="arrow-right-icon  cursor-pointer hover-effect"
-                     src={arrowRight}
-                     alt="arrow right icon"
-                     onClick={() => this.moveImg(false)}
-                  />
-               </div>
-            )}
-         </div>
-      );
-   }
+   return (
+      <div className="carousal-img-container">
+         <img
+            className="carousal-img  element-transition show"
+            src={gallery[selectedImg]}
+            alt="current-carousal"
+         />
+         <div className="img-overlay"></div>
+         {!isCartTab && gallery.length > 1 && (
+            <div className="arrow-group">
+               <img
+                  className="arrow-left-icon cursor-pointer hover-effect"
+                  src={arrowLeft}
+                  alt="arrow left icon"
+                  onClick={() => moveImg(true)}
+               />
+               <img
+                  className="arrow-right-icon  cursor-pointer hover-effect"
+                  src={arrowRight}
+                  alt="arrow right icon"
+                  onClick={() => moveImg(false)}
+               />
+            </div>
+         )}
+      </div>
+   );
 }
 
 export default ImageCarousal;
