@@ -17,10 +17,7 @@
    align-items: center;
 
    color: #1d1f22;
-}
-
-h2::first-letter {
-   text-transform: uppercase;
+   text-transform: capitalize;
 }
 
 .products-container {
@@ -40,6 +37,6 @@ h2::first-letter {
 }
 @media (min-width: 1200px) {
    .products-container {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
    }
 }

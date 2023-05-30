@@ -1,19 +1,13 @@
 .App {
    position: relative;
-   max-width: 1200px;
-   /* margin-left: 101px;
-  margin-right: 101px; */
    margin: auto;
+}
+.App,
+nav {
+   width: min(100vw, 1200px);
 }
 
 .header {
-   position: fixed;
-   width: 100%;
-   max-width: 1200px;
-   height: 80px;
-   top: 0px;
-   z-index: 6;
-   background-color: #ffff;
 }
 
 .main-body {

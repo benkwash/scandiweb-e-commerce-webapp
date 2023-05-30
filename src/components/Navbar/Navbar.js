@@ -27,6 +27,8 @@ function Navbar({
    selectedNav,
    setCurrency
 }) {
+   const { totalQuantity, totalCost } = getCartDetails(cart, selectedCurrency);
+
    const [showCurrencyTab, setShowCurrencyTab] = useState(false);
    const [showCart, setShowCart] = useState(false);
 
@@ -52,7 +54,7 @@ function Navbar({
 
    const navBarLinks = categories.map((category, index) => {
       return (
-         <div className="nav-items" key={`${index}-${category}`}>
+         <div className="nav-item" key={`${index}-${category}`}>
             <NavLink
                onClick={() => setNavIndex(index)}
                to={`/products/${category}`}
@@ -118,8 +120,6 @@ function Navbar({
          </div>
       </div>
    );
-
-   const { totalQuantity, totalCost } = getCartDetails(cart, selectedCurrency);
 
    const cartTab = (
       <div ref={cartDropdownRef} className="cart-group">
@@ -204,8 +204,9 @@ function Navbar({
       <>
          <nav>
             <div className="navigation">{navBarLinks}</div>
-
-            <img className="logo-icon-home" src={aLogo} alt="logo icon" />
+            <div className="img-container">
+               <img className="logo-icon-home" src={aLogo} alt="logo icon" />
+            </div>
             <div className="actions-tab">
                {currencyTab}
                {cartTab}

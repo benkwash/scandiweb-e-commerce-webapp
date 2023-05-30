@@ -75,10 +75,7 @@ export class Products extends Component {
       );
       return (
          <div className="products-page">
-            <h2>
-               {selectedCategory[0].toUpperCase() +
-                  selectedCategory.slice(1).toLowerCase()}
-            </h2>
+            <h2>{selectedCategory}</h2>
             <div className="products-container">{productCards}</div>
          </div>
       );
